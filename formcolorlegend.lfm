@@ -1,0 +1,281 @@
+object frmLegend: TfrmLegend
+  Left = 739
+  Height = 403
+  Top = 243
+  Width = 437
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Included Files List Legend'
+  ClientHeight = 403
+  ClientWidth = 437
+  FormStyle = fsStayOnTop
+  Position = poOwnerFormCenter
+  LCLVersion = '4.0.0.4'
+  object Label1: TLabel
+    Left = 16
+    Height = 16
+    Top = 8
+    Width = 347
+    Caption = 'Entries in the Included Files List are displayed as follows:'
+    Font.Height = -13
+    Font.Style = [fsBold, fsUnderline]
+    ParentFont = False
+  end
+  object pnlDisk: TPanel
+    Left = 16
+    Height = 104
+    Top = 40
+    Width = 296
+    BevelOuter = bvNone
+    ClientHeight = 104
+    ClientWidth = 296
+    TabOrder = 0
+    object Rect4: TShape
+      Left = 0
+      Height = 95
+      Top = 8
+      Width = 294
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Brush.Style = bsClear
+    end
+    object gbCaption1: TStaticText
+      Left = 8
+      Height = 18
+      Top = 0
+      Width = 119
+      AutoSize = True
+      Caption = ' Project File on Disk '
+      Font.Height = -13
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Label8: TLabel
+      Left = 8
+      Height = 14
+      Top = 24
+      Width = 134
+      Caption = 'Files that exist are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 200
+      Height = 16
+      Top = 22
+      Width = 40
+      Caption = 'BLACK'
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 16
+      Height = 14
+      Top = 40
+      Width = 204
+      Caption = 'and are checked for packaging by default.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 8
+      Height = 15
+      Top = 64
+      Width = 187
+      Caption = 'Files that do not exist are colored:'
+      Font.Height = -12
+      ParentFont = False
+    end
+    object Label12: TLabel
+      Left = 200
+      Height = 16
+      Top = 63
+      Width = 24
+      Caption = 'RED'
+      Font.Color = clRed
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 16
+      Height = 15
+      Top = 80
+      Width = 276
+      Caption = 'and are NOT allowed to be checked for packaging.'
+      Font.Height = -12
+      ParentFont = False
+    end
+  end
+  object pnlProj: TPanel
+    Left = 16
+    Height = 232
+    Top = 160
+    Width = 408
+    BevelOuter = bvNone
+    ClientHeight = 232
+    ClientWidth = 408
+    TabOrder = 1
+    object Rect5: TShape
+      Left = 0
+      Height = 223
+      Top = 8
+      Width = 406
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Brush.Style = bsClear
+    end
+    object gbCaption2: TStaticText
+      Left = 8
+      Height = 18
+      Top = 0
+      Width = 138
+      AutoSize = True
+      Caption = ' Project File in Package '
+      Font.Height = -13
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Label14: TLabel
+      Left = 8
+      Height = 14
+      Top = 24
+      Width = 310
+      Caption = 'Files that exist in the package but NOT on the disk are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label15: TLabel
+      Left = 352
+      Height = 16
+      Top = 24
+      Width = 40
+      Caption = 'BLACK'
+      Font.Color = clBlack
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 16
+      Height = 14
+      Top = 40
+      Width = 208
+      Caption = 'and are checked for restoration by default.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label20: TLabel
+      Left = 16
+      Height = 14
+      Top = 208
+      Width = 251
+      Caption = 'and are NOT allowed to be checked for restoration.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label21: TLabel
+      Left = 8
+      Height = 14
+      Top = 192
+      Width = 297
+      Caption = 'Files that do not exist iin the package or on disk are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label22: TLabel
+      Left = 352
+      Height = 16
+      Top = 192
+      Width = 24
+      Caption = 'RED'
+      Font.Color = clRed
+      ParentFont = False
+    end
+    object Label23: TLabel
+      Left = 16
+      Height = 14
+      Top = 80
+      Width = 260
+      Caption = 'If both files are the exact same size they are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label24: TLabel
+      Left = 8
+      Height = 14
+      Top = 64
+      Width = 326
+      Caption = 'Files that exist in the package AND on disk are colored as follows.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label25: TLabel
+      Left = 352
+      Height = 16
+      Top = 80
+      Width = 41
+      Caption = 'GREEN'
+      Font.Color = clGreen
+      ParentFont = False
+    end
+    object Label26: TLabel
+      Left = 16
+      Height = 14
+      Top = 112
+      Width = 255
+      Caption = 'If both files are NOT the same size they are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label27: TLabel
+      Left = 24
+      Height = 14
+      Top = 128
+      Width = 233
+      Caption = 'and are NOT checked for restoration by default.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label28: TLabel
+      Left = 352
+      Height = 16
+      Top = 112
+      Width = 50
+      Caption = 'YELLOW'
+      Color = clYellow
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+    end
+    object Label29: TLabel
+      Left = 24
+      Height = 14
+      Top = 96
+      Width = 233
+      Caption = 'and are NOT checked for restoration by default.'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 8
+      Height = 14
+      Top = 152
+      Width = 319
+      Caption = 'Files that do not exist in the package but are on disk are colored:'
+      Font.Height = -11
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 352
+      Height = 16
+      Top = 152
+      Width = 34
+      Caption = 'GRAY'
+      Font.Color = clGray
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 16
+      Height = 14
+      Top = 168
+      Width = 251
+      Caption = 'and are NOT allowed to be checked for restoration.'
+      Font.Height = -11
+      ParentFont = False
+    end
+  end
+end

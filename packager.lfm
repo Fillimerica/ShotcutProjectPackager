@@ -1,0 +1,83 @@
+object frmProgress: TfrmProgress
+  Left = 2117
+  Height = 102
+  Top = 409
+  Width = 633
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Package File Progress'
+  ClientHeight = 102
+  ClientWidth = 633
+  FormStyle = fsStayOnTop
+  Position = poOwnerFormCenter
+  LCLVersion = '4.0.0.4'
+  object lblcFile1: TLabel
+    Left = 8
+    Height = 21
+    Top = 40
+    Width = 45
+    Caption = 'Name:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object lblcFile: TLabel
+    Left = 64
+    Height = 33
+    Top = 40
+    Width = 568
+    AutoSize = False
+    Caption = 'lblcFile'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    WordWrap = True
+  end
+  object lblProgress: TLabel
+    Left = 8
+    Height = 21
+    Top = 72
+    Width = 64
+    Caption = 'Progress:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object ProgressBar1: TProgressBar
+    Left = 80
+    Height = 16
+    Top = 77
+    Width = 544
+    TabOrder = 0
+  end
+  object lblcFile2: TLabel
+    Left = 8
+    Height = 21
+    Top = 8
+    Width = 109
+    Caption = 'Working on file:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object lblFileCount: TLabel
+    Left = 128
+    Height = 21
+    Top = 8
+    Width = 78
+    Caption = 'xxxx of xxxx'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+end
