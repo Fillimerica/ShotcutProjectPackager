@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 856
+  Left = 2711
   Height = 608
-  Top = 206
+  Top = 339
   Width = 839
   Caption = 'ShotCut Project Packager 0.0.0'
   ClientHeight = 608
@@ -1343,6 +1343,7 @@ object Form1: TForm1
     Height = 392
     Top = 112
     Width = 368
+    Anchors = [akTop, akLeft, akBottom]
     AutoExpand = True
     Images = TVIL
     ReadOnly = True
@@ -1394,6 +1395,7 @@ object Form1: TForm1
     Top = 64
     Width = 122
     Alignment = taRightJustify
+    Anchors = [akTop, akRight]
     Caption = 'Total Files in Project: '
     Font.CharSet = ANSI_CHARSET
     Font.Height = -13
@@ -1420,6 +1422,7 @@ object Form1: TForm1
     Top = 88
     Width = 139
     Alignment = taRightJustify
+    Anchors = [akTop, akRight]
     Caption = 'Missing Files in Project: '
     Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
@@ -1434,6 +1437,7 @@ object Form1: TForm1
     Top = 64
     Width = 65
     Alignment = taRightJustify
+    Anchors = [akTop, akRight]
     AutoSize = False
     Caption = 'lblTotalFiles'
     Font.CharSet = ANSI_CHARSET
@@ -1448,6 +1452,7 @@ object Form1: TForm1
     Top = 88
     Width = 65
     Alignment = taRightJustify
+    Anchors = [akTop, akRight]
     AutoSize = False
     Caption = 'lblMissingFiles'
     Font.CharSet = ANSI_CHARSET
@@ -1586,7 +1591,6 @@ object Form1: TForm1
     Height = 23
     Top = 88
     Width = 96
-    Anchors = [akRight, akBottom]
     Caption = 'Hide Tree View'
     TabOrder = 6
     OnClick = btnTVClick
@@ -1596,6 +1600,7 @@ object Form1: TForm1
     Height = 392
     Top = 112
     Width = 424
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Columns = <    
       item
         ButtonStyle = cbsCheckboxColumn

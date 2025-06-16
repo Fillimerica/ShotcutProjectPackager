@@ -67,7 +67,7 @@ var
 
 
 const
-  gcPVerStr:String='0.2.0 alpha';
+  gcPVerStr:String='0.2.1 alpha';
 
   // Define helpful constants for the sTringGrid columns
   cIFLCheckBox:Integer=0;
