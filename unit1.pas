@@ -498,6 +498,9 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
  Caption:='ShotCut Project Packager '+ gcPVerStr;
+ // Define rational minimum window sizes for the main program window.
+ Constraints.MinHeight:=280;
+ Constraints.MinWidth:=740;
  InitProject();
 end;
 procedure TForm1.sgIFLCheckboxToggled(Sender: TObject; aCol, aRow: Integer;
@@ -741,7 +744,6 @@ begin
    btnTVHide.Caption:='Hide Tree View';
   end;
 end;
-
 
 end.
 

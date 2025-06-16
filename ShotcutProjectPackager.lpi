@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="2"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="7"/>
+      <BuildNr Value="9"/>
       <StringTable FileDescription="ShotCut Project Packager" LegalCopyright="(c) 2025 Thomas Filliman" ProductName="ShotCut Project Packager"/>
     </VersionInfo>
     <BuildModes>
