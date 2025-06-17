@@ -6,8 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, StdCtrls,
-  ExtCtrls, DOM, XMLRead, FileUtil, LCLType, Grids, StrUtils,
-  Packager,  FormCreatePackageFile, FormColorLegend, FormRestoreProjectFiles;
+  ExtCtrls, DOM, XMLRead, FileUtil, LCLType, Grids, Menus, StrUtils,
+  Packager,  FormCreatePackageFile, FormColorLegend, FormRestoreProjectFiles,
+  FormSaveSettings;
 
 type
 
@@ -22,6 +23,11 @@ type
     btnLegend: TButton;
     lblSCPF2: TLabel;
     lblPackageFile: TLabel;
+    AppMenu: TMainMenu;
+    mnuSaveSettings: TMenuItem;
+    mnuSep1: TMenuItem;
+    mnuOpen: TMenuItem;
+    mnuFile: TMenuItem;
     SaveDialog1: TSaveDialog;
     SelFiles: TLabel;
     SelFiles1: TLabel;
@@ -46,6 +52,8 @@ type
     procedure btnSelAllIncFilesClick(Sender: TObject);
     procedure btnTVClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure mnuSaveSettingsClick(Sender: TObject);
     procedure sgIFLCheckboxToggled(Sender: TObject; aCol, aRow: Integer;
       aState: TCheckboxState);
     procedure sgIFLPrepareCanvas(Sender: TObject; aCol, aRow: Integer;
@@ -59,6 +67,7 @@ type
 
 var
   Form1: TForm1;
+  gAppConfigFile:String;
   gTotalFiles,gMissingFiles:Integer;
   gSelFiles:Integer;
   gSelFilesSize:QWord;
@@ -67,7 +76,7 @@ var
 
 
 const
-  gcPVerStr:String='0.2.1 alpha';
+  gcPVerStr:String='0.3.0 alpha';
 
   // Define helpful constants for the sTringGrid columns
   cIFLCheckBox:Integer=0;
@@ -84,6 +93,21 @@ implementation
 {$R *.lfm}
 
 
+// Function to return a consistent Application Name independent of the actual
+// executable name. Used for storing application configuration files.
+function MyAppName:string;
+begin
+Result:='ShotcutProjectPackager';
+end;
+procedure InitApplication();
+// This procedure gets called once during application startup
+
+Begin
+// Low-level initialization of Callbacks
+OnGetApplicationName := @MyAppName;
+gAppConfigFile:=GetAppConfigFile(false,true);
+
+end;
 
 Procedure UpdateProjectUI();
 begin
@@ -97,7 +121,9 @@ end; // with
 end;
 
 Procedure InitProject();
+
 begin
+
 // Handles reset of global UI variables as shown on the form.
 With Form1 do begin
   btnPackProjFiles.Enabled:=false;
@@ -483,7 +509,7 @@ if (lIndex>-1) then begin
   UpdateProjectUI;
 
 end else begin
-  lMsg:='Unable to locate the ShotCut Project (.mlt) file in the Package'+CHR(13)+CHR(13)+
+  lMsg:='Unable to locate the Shotcut Project (.mlt) file in the Package'+LineEnding+LineEnding+
        'Package file will not be opened.';
   Application.MessageBox(PChar(lMsg),'LoadPackageFile Error',MB_ICONERROR+MB_OK);
 end;
@@ -497,12 +523,27 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
- Caption:='ShotCut Project Packager '+ gcPVerStr;
+ Caption:='Shotcut Project Packager '+ gcPVerStr;
  // Define rational minimum window sizes for the main program window.
  Constraints.MinHeight:=280;
  Constraints.MinWidth:=740;
- InitProject();
+ InitApplication(); // One time startup initializations
+
+ InitProject(); // Reset UI variables and objects to their default state on the main form
 end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+// Settings restoration added here because Form1 attributes must be restored in the
+// FormShow Event.
+  FormSaveSettings.AppSettingsRead();  // Load the current application settings from the Config File
+end;
+
+procedure TForm1.mnuSaveSettingsClick(Sender: TObject);
+begin
+  FormSaveSettings.frmSaveSettings.ShowModal;
+end;
+
 procedure TForm1.sgIFLCheckboxToggled(Sender: TObject; aCol, aRow: Integer;
   aState: TCheckboxState);
 
@@ -514,14 +555,14 @@ begin
 // Trap and discard checking on invalid list items.
 if aState=cbChecked then begin
   if TSG.Cells[cIFLLineColor,aRow]='clRed' then begin
-    lMsg:='Cannot select a missing file for any action.'+CHR(13)+
+    lMsg:='Cannot select a missing file for any action.'+LineEnding+
     'Item will remain unchecked.';
     Application.MessageBox(PChar(lMsg),'Included Files Operation',MB_ICONEXCLAMATION+MB_OK);
     TSG.Cells[cIFLCheckBox,aRow]:='0';
     Exit;
   end;
   if TSG.Cells[cIFLLineColor,aRow]='clGray' then begin
-    lMsg:='Cannot select a file not in the package for restoration.'+CHR(13)+
+    lMsg:='Cannot select a file not in the package for restoration.'+LineEnding+
     'Item will remain unchecked.';
     Application.MessageBox(PChar(lMsg),'Included Files Operation',MB_ICONEXCLAMATION+MB_OK);
     TSG.Cells[cIFLCheckBox,aRow]:='0';
@@ -589,8 +630,8 @@ begin
 // LoadProjFile from within.
         LoadPackageFile(Form1.OpenDialog1.FileName)
       else begin
-        lMsg:='Selected File: '+Form1.OpenDialog1.FileName+CHR(13)+
-        'Is Not A Project or Package'+Chr(13)+'Nothing opened.';
+        lMsg:='Selected File: '+Form1.OpenDialog1.FileName+LineEnding+
+        'Is Not A Project or Package'+LineEnding+'Nothing opened.';
         Application.MessageBox(PChar(lMsg),'Open',MB_ICONEXCLAMATION);
       end;
     end;
@@ -620,8 +661,8 @@ var
 begin
 // If no included files are checked, advise user and cancel Package Creation.
 if gSelFiles=0 then begin
-  lMsg:='No files from the Included Files List are Checked.'+CHR(13)+CHR(13)+
-   'There must be at least 1 file checked to create the Package.'+CHR(13)+CHR(13)+
+  lMsg:='No files from the Included Files List are Checked.'+LineEnding+LineEnding+
+   'There must be at least 1 file checked to create the Package.'+LineEnding+LineEnding+
    'Package Operation Canceled.';
   lResult:=Application.MessageBox(PChar(lMsg),'Selected Files Confirmation',MB_ICONEXCLAMATION+MB_OK);
   exit;
@@ -629,7 +670,7 @@ end;
 
 // If Any project files are missing, display a warning dialog to proceed.
 if gMissingFiles>0 then begin
-  lMsg:='Some files referenced in the project are missing or inaccesible from this computer.'+CHR(13)+CHR(13)+
+  lMsg:='Some files referenced in the project are missing or inaccesible from this computer.'+LineEnding+LineEnding+
    'Continue with packaging excluding these missing files?';
   lResult:=Application.MessageBox(PChar(lMsg),'Missing Files Confirmation',MB_ICONEXCLAMATION+MB_YESNO);
   if lResult= IDNO then exit;
@@ -637,7 +678,7 @@ end;
 
 // Warn User if the selected file count is less than the total files in the project.
 if gSelFiles<>gTotalFiles then begin
-  lMsg:='Some files referenced in the project are not selected for inclusion.'+CHR(13)+CHR(13)+
+  lMsg:='Some files referenced in the project are not selected for inclusion.'+LineEnding+LineEnding+
    'Continue with packaging excluding these unchecked files?';
   lResult:=Application.MessageBox(PChar(lMsg),'Unselected Files Confirmation',MB_ICONEXCLAMATION+MB_YESNO);
   if lResult= IDNO then exit;
@@ -651,7 +692,7 @@ if Form1.SaveDialog1.Execute then with FormCreatePackageFile.frmPackage do begin
    SelFilesSize.Caption:=Form1.SelFilesSize.Caption;
    Show
  end else begin
-   lMsg:='Package Name Not Specified.'+CHR(13)+CHR(13)+'Package Ooperation Cancelled.';
+   lMsg:='Package Name Not Specified.'+LineEnding+LineEnding+'Package Ooperation Cancelled.';
    Application.MessageBox(PChar(lMsg),'Package Creation',MB_ICONINFORMATION+MB_OK);
 end;
 
@@ -671,8 +712,8 @@ var
 begin
 // If no included files are checked, advise user and cancel Package Creation.
 if gSelFiles=0 then begin
-  lMsg:='No files from the Included Files List are Checked.'+CHR(13)+CHR(13)+
-   'There must be at least 1 file checked to unpackage.'+CHR(13)+CHR(13)+
+  lMsg:='No files from the Included Files List are Checked.'+LineEnding+LineEnding+
+   'There must be at least 1 file checked to unpackage.'+LineEnding+LineEnding+
    'Package Operation Canceled.';
   Application.MessageBox(PChar(lMsg),'Selected Files Confirmation',MB_ICONEXCLAMATION+MB_OK);
   exit;

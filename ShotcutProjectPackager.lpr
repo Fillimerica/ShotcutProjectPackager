@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, Unit1, Packager, FormRestoreProjectFiles, formColorLegend,
-  FormCreatePackageFile;
+  FormCreatePackageFile, formSaveSettings;
 
 {$R *.res}
 
@@ -27,6 +27,7 @@ begin
   Application.CreateForm(TfrmRestore, frmRestore);
   Application.CreateForm(TfrmProgress, frmProgress);
   Application.CreateForm(TfrmLegend, frmLegend);
+  Application.CreateForm(TfrmSaveSettings, frmSaveSettings);
   Application.Run;
 end.
 

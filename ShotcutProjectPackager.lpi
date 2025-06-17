@@ -20,9 +20,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MinorVersionNr Value="2"/>
-      <RevisionNr Value="1"/>
-      <BuildNr Value="9"/>
+      <MinorVersionNr Value="3"/>
       <StringTable FileDescription="ShotCut Project Packager" LegalCopyright="(c) 2025 Thomas Filliman" ProductName="ShotCut Project Packager"/>
     </VersionInfo>
     <BuildModes>
@@ -39,6 +37,8 @@
             <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
             <Optimizations>
               <OptimizationLevel Value="2"/>
             </Optimizations>
@@ -115,6 +115,9 @@
               </Win32>
             </Options>
           </Linking>
+          <Other>
+            <WriteFPCLogo Value="False"/>
+          </Other>
         </CompilerOptions>
       </Item>
     </BuildModes>
@@ -175,6 +178,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormCreatePackageFile"/>
       </Unit>
+      <Unit>
+        <Filename Value="formsavesettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSaveSettings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formSaveSettings"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -187,6 +198,10 @@
       <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
+    <CodeGeneration>
+      <TargetCPU Value="x86_64"/>
+      <TargetOS Value="win64"/>
+    </CodeGeneration>
     <Linking>
       <Debugging>
         <DebugInfoType Value="dsDwarf3"/>

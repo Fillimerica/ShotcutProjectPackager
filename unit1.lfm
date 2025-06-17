@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 2711
-  Height = 608
-  Top = 339
-  Width = 839
+  Left = 1014
+  Height = 602
+  Top = 424
+  Width = 1046
   Caption = 'ShotCut Project Packager 0.0.0'
-  ClientHeight = 608
-  ClientWidth = 839
+  ClientHeight = 602
+  ClientWidth = 1046
   Icon.Data = {
     ABA400000000010009002020000001001800A80C000096000000101000000100
     1800680300003E0D00003030000001001800A81C0000A6100000202000000100
@@ -1326,21 +1326,23 @@ object Form1: TForm1
     030000C003FFF0C003FFFF8000FFFF8000FFFFC001FFFFC001FFFF8000FFFF80
     00FFFFC003FFFFF90FFFFFFFFFFFFF
   }
+  Menu = AppMenu
   Position = poScreenCenter
   LCLVersion = '4.0.0.4'
   OnCreate = FormCreate
+  OnShow = FormShow
   object btnOpen: TButton
     Left = 24
     Height = 24
     Top = 56
-    Width = 88
+    Width = 89
     Caption = '&Open'
     TabOrder = 0
     OnClick = btnOpenClick
   end
   object TV: TTreeView
     Left = 16
-    Height = 392
+    Height = 387
     Top = 112
     Width = 368
     Anchors = [akTop, akLeft, akBottom]
@@ -1352,13 +1354,13 @@ object Form1: TForm1
   end
   object lblSCPF1: TLabel
     Left = 16
-    Height = 17
-    Top = 8
-    Width = 119
+    Height = 15
+    Top = 7
+    Width = 110
     Alignment = taRightJustify
     Caption = 'ShotCut Project File: '
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
@@ -1366,73 +1368,73 @@ object Form1: TForm1
   object lblSCProjectFile: TLabel
     Left = 136
     Height = 17
-    Top = 8
-    Width = 680
+    Top = 7
+    Width = 679
     AutoSize = False
     Caption = 'lblSCProjectFile'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object lblifTV: TLabel
     Left = 16
-    Height = 17
-    Top = 88
-    Width = 151
+    Height = 15
+    Top = 89
+    Width = 134
     Caption = 'Included Files Tree View'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
   end
   object lblSCPF4: TLabel
-    Left = 631
-    Height = 17
+    Left = 850
+    Height = 15
     Top = 64
-    Width = 122
+    Width = 110
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Total Files in Project: '
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object lblifList: TLabel
-    Left = 402
-    Height = 17
-    Top = 88
-    Width = 112
+    Left = 401
+    Height = 15
+    Top = 89
+    Width = 99
     Caption = 'Included Files List'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
   end
   object lblSCPF6: TLabel
-    Left = 614
-    Height = 17
-    Top = 88
-    Width = 139
+    Left = 834
+    Height = 15
+    Top = 89
+    Width = 126
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Missing Files in Project: '
     Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object lblTotalFiles: TLabel
-    Left = 751
+    Left = 959
     Height = 17
     Top = 64
     Width = 65
@@ -1441,15 +1443,15 @@ object Form1: TForm1
     AutoSize = False
     Caption = 'lblTotalFiles'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object lblMissingFiles: TLabel
-    Left = 751
+    Left = 959
     Height = 17
-    Top = 88
+    Top = 89
     Width = 65
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
@@ -1457,14 +1459,14 @@ object Form1: TForm1
     Caption = 'lblMissingFiles'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object btnPackProjFiles: TButton
     Left = 136
-    Height = 23
+    Height = 22
     Top = 57
     Width = 131
     Caption = 'Package Project Files'
@@ -1473,65 +1475,65 @@ object Form1: TForm1
     OnClick = btnPackProjFilesClick
   end
   object SelFiles: TLabel
-    Left = 512
+    Left = 719
     Height = 21
-    Top = 512
+    Top = 506
     Width = 56
     Alignment = taRightJustify
     Anchors = [akRight, akBottom]
     AutoSize = False
     Caption = 'SelFiles'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object SelFiles1: TLabel
-    Left = 584
+    Left = 790
     Height = 21
-    Top = 512
+    Top = 506
     Width = 96
     Anchors = [akRight, akBottom]
     AutoSize = False
     Caption = 'Approx. Size:'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object SelFilesSize: TLabel
-    Left = 680
+    Left = 886
     Height = 21
-    Top = 512
-    Width = 144
+    Top = 506
+    Width = 145
     Anchors = [akRight, akBottom]
     AutoSize = False
     Caption = 'SelFilesSize'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object SelFiles2: TLabel
-    Left = 408
+    Left = 615
     Height = 21
-    Top = 512
+    Top = 506
     Width = 96
     Anchors = [akRight, akBottom]
     AutoSize = False
     Caption = 'Selected Files: '
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object btnRestoreProjFiles: TButton
     Left = 288
-    Height = 23
+    Height = 22
     Top = 56
     Width = 152
     Caption = 'Unpackage Project Files'
@@ -1541,13 +1543,13 @@ object Form1: TForm1
   end
   object lblSCPF2: TLabel
     Left = 57
-    Height = 17
+    Height = 15
     Top = 24
-    Width = 78
+    Width = 71
     Alignment = taRightJustify
     Caption = 'Package File: '
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
@@ -1560,25 +1562,25 @@ object Form1: TForm1
     AutoSize = False
     Caption = 'lblPackageFile'
     Font.CharSet = ANSI_CHARSET
-    Font.Height = -13
+    Font.Height = -12
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     ParentFont = False
   end
   object btnLegend: TButton
-    Left = 664
-    Height = 23
-    Top = 544
-    Width = 164
+    Left = 870
+    Height = 22
+    Top = 539
+    Width = 165
     Anchors = [akRight, akBottom]
     Caption = 'Included Files List Legend'
     TabOrder = 4
     OnClick = btnLegendClick
   end
   object btnSelAllIncFiles: TButton
-    Left = 408
-    Height = 23
-    Top = 544
+    Left = 615
+    Height = 22
+    Top = 539
     Width = 152
     Anchors = [akRight, akBottom]
     Caption = 'Select/Unselect All'
@@ -1588,8 +1590,8 @@ object Form1: TForm1
   end
   object btnTVHide: TButton
     Left = 288
-    Height = 23
-    Top = 88
+    Height = 22
+    Top = 89
     Width = 96
     Caption = 'Hide Tree View'
     TabOrder = 6
@@ -1597,9 +1599,9 @@ object Form1: TForm1
   end
   object sgIFL: TStringGrid
     Left = 400
-    Height = 392
+    Height = 387
     Top = 112
-    Width = 424
+    Width = 631
     Anchors = [akTop, akLeft, akRight, akBottom]
     Columns = <    
       item
@@ -1642,7 +1644,7 @@ object Form1: TForm1
     InitialDir = 'S:\Amazon and Youtube\'
   end
   object TVIL: TImageList
-    Top = 88
+    Top = 89
     Bitmap = {
       4C7A020000001000000010000000230100000000000078DA63139166E4D63467
       45C7AC62D28C0C440083B50FB71BAC7DF0101D1BAE7D7058D8315499907EC3B5
@@ -1728,5 +1730,22 @@ object Form1: TForm1
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
     Left = 767
     Top = 6
+  end
+  object AppMenu: TMainMenu
+    Left = 32
+    object mnuFile: TMenuItem
+      Caption = '&File'
+      object mnuOpen: TMenuItem
+        Caption = '&Open ...'
+        OnClick = btnOpenClick
+      end
+      object mnuSep1: TMenuItem
+        Caption = '-'
+      end
+      object mnuSaveSettings: TMenuItem
+        Caption = 'Save Settings'
+        OnClick = mnuSaveSettingsClick
+      end
+    end
   end
 end
