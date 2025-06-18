@@ -113,3 +113,25 @@ Pay special attention to the "Restore Project Files To:" option.
 3. The ShotCut project file will be looking for the files in their original location. Upon 1st opening the restored project file, you will have to go through the ShotCut file relinking process in order for the project to utilize the files in the new location.
 
 Select "Start Restore" to extract the checked files from the package file.
+
+---
+
+### Saving & Restoring the Application Window Size and Position
+Starting with release 0.3.0 there is new functionality to store the application window size and position on a per-user basis.
+By default, the Shotcut Project Packager Application will be displayed centered on the user's primary desktop.
+* Once started, the main window can be moved anywhere on the user's desktop by click and drag on the title bar.
+* The window can be resized smaller or larger(there is a rational "minimum" size) by click and drag on the edge of the window.
+In order to retain the  new window size and position between sessions, the application settings need to be saved:
+1. From the main menu, select File, then select Save Settings.
+   ![image](Documentation/MenuSaveSettings.png)
+2. The save settings confirmation dialog will be shown.
+   Ensure that the option "Main Application Window Size and Position" is checked. (Currently it is the only option, but it is anticipated there will be other settings in the future.)<br>
+   The location and name of the application settings file is also shown at the top of the dialog. This is informational only and can not be changed. However, it is possible to edit this file outside of the application if necessary.
+   ![image](Documentation/SaveSettingsDialog030.png)
+3. Click on Save. The current application window size and position will be saved in the Settings file in INI style format.
+
+After the settings file has been created, when the application is subsequently launched the settings file will be read and the window size and position will be restored.
+
+*Note: There are built-in checks to ensure that the application window is drawn in a location that is valid and viewable in the current session. However, as a fail-safe this file may be deleted or edited to correct for unanticipated changes to the geometry of the user's desktop.*
+
+---
