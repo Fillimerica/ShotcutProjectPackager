@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 1014
-  Height = 602
-  Top = 424
+  Left = 874
+  Height = 554
+  Top = 406
   Width = 1046
   Caption = 'ShotCut Project Packager 0.0.0'
-  ClientHeight = 602
+  ClientHeight = 554
   ClientWidth = 1046
   Icon.Data = {
     ABA400000000010009002020000001001800A80C000096000000101000000100
@@ -1342,7 +1342,7 @@ object Form1: TForm1
   end
   object TV: TTreeView
     Left = 16
-    Height = 387
+    Height = 339
     Top = 112
     Width = 368
     Anchors = [akTop, akLeft, akBottom]
@@ -1356,7 +1356,7 @@ object Form1: TForm1
     Left = 16
     Height = 15
     Top = 7
-    Width = 110
+    Width = 115
     Alignment = taRightJustify
     Caption = 'ShotCut Project File: '
     Font.CharSet = ANSI_CHARSET
@@ -1392,10 +1392,10 @@ object Form1: TForm1
     ParentFont = False
   end
   object lblSCPF4: TLabel
-    Left = 850
+    Left = 844
     Height = 15
     Top = 64
-    Width = 110
+    Width = 116
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Total Files in Project: '
@@ -1409,7 +1409,7 @@ object Form1: TForm1
     Left = 401
     Height = 15
     Top = 89
-    Width = 99
+    Width = 101
     Caption = 'Included Files List'
     Font.CharSet = ANSI_CHARSET
     Font.Height = -12
@@ -1419,10 +1419,10 @@ object Form1: TForm1
     ParentFont = False
   end
   object lblSCPF6: TLabel
-    Left = 834
+    Left = 831
     Height = 15
     Top = 89
-    Width = 126
+    Width = 129
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Missing Files in Project: '
@@ -1477,7 +1477,7 @@ object Form1: TForm1
   object SelFiles: TLabel
     Left = 719
     Height = 21
-    Top = 506
+    Top = 458
     Width = 56
     Alignment = taRightJustify
     Anchors = [akRight, akBottom]
@@ -1492,7 +1492,7 @@ object Form1: TForm1
   object SelFiles1: TLabel
     Left = 790
     Height = 21
-    Top = 506
+    Top = 458
     Width = 96
     Anchors = [akRight, akBottom]
     AutoSize = False
@@ -1506,7 +1506,7 @@ object Form1: TForm1
   object SelFilesSize: TLabel
     Left = 886
     Height = 21
-    Top = 506
+    Top = 458
     Width = 145
     Anchors = [akRight, akBottom]
     AutoSize = False
@@ -1520,7 +1520,7 @@ object Form1: TForm1
   object SelFiles2: TLabel
     Left = 615
     Height = 21
-    Top = 506
+    Top = 458
     Width = 96
     Anchors = [akRight, akBottom]
     AutoSize = False
@@ -1545,7 +1545,7 @@ object Form1: TForm1
     Left = 57
     Height = 15
     Top = 24
-    Width = 71
+    Width = 73
     Alignment = taRightJustify
     Caption = 'Package File: '
     Font.CharSet = ANSI_CHARSET
@@ -1570,7 +1570,7 @@ object Form1: TForm1
   object btnLegend: TButton
     Left = 870
     Height = 22
-    Top = 539
+    Top = 491
     Width = 165
     Anchors = [akRight, akBottom]
     Caption = 'Included Files List Legend'
@@ -1580,7 +1580,7 @@ object Form1: TForm1
   object btnSelAllIncFiles: TButton
     Left = 615
     Height = 22
-    Top = 539
+    Top = 491
     Width = 152
     Anchors = [akRight, akBottom]
     Caption = 'Select/Unselect All'
@@ -1599,7 +1599,7 @@ object Form1: TForm1
   end
   object sgIFL: TStringGrid
     Left = 400
-    Height = 387
+    Height = 339
     Top = 112
     Width = 631
     Anchors = [akTop, akLeft, akRight, akBottom]

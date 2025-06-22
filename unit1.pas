@@ -76,7 +76,7 @@ var
 
 
 const
-  gcPVerStr:String='0.3.0 alpha';
+  gcPVerStr:String='0.4.0 alpha';
 
   // Define helpful constants for the sTringGrid columns
   cIFLCheckBox:Integer=0;
@@ -196,7 +196,7 @@ procedure AddFileToStringGrid(SrcFQFN:String);
 var
    LIndex,lNewRow:Integer; // row index when searching.
    lFileSize:String;
-   nFileSize:Integer;
+   nFileSize:Int64;
 
 begin
 // Checked/selected is col 0
@@ -362,15 +362,13 @@ j: Integer;
 SelFilePath:AnsiString;
 FCFileName:String;
 lPrevEntry:String;
+lMsg:String;
 
 const
 // Shotcut file resources are specified using the NodeName, followed by an attribute
 cNodeName:UnicodeString = 'property';
 cName:UnicodeString ='name';
 cResource:UnicodeString='resource';
-// There are a few resources that end up not being file resources, so an additional
-// filter is used to help validate.
-cFirstCarSet:Set of Char=['A'..'Z', 'a'..'z'];
 
 begin
 try
@@ -394,12 +392,14 @@ try
     try
       for j := 0 to (Count - 1) do begin
        if Item[j].NodeName=cNodeName then
-          if (Item[j].Attributes.Item[0].NodeName=cName) and (Item[j].Attributes.Item[0].NodeValue=cResource) then
-             if Item[j].FirstChild.NodeValue[1] in cFirstCarSet then begin
+          if (Item[j].Attributes.Item[0].NodeName=cName) and (Item[j].Attributes.Item[0].NodeValue=cResource) then begin
+          // Filter any resource that does not include a period (extension delimiter)
+              if Pos('.',Item[j].FirstChild.NodeValue)>0 then begin
                 FCFileName:=String(Item[j].FirstChild.NodeValue);
 // if file only, prepend project path otherwise ensure that drive letter is uppercase
-                 if FCFileName[2]<>':' then FCFileName:=SelFilePath+FCFileName
-                   else FCFileName[1]:=UpperCase(FCFileName[1])[1];
+// handle UNC paths as well.
+                 if FCFileName[2]=':' then FCFileName[1]:=UpperCase(FCFileName[1])[1]
+                 else if not (FCFileName[1] in ['/','\']) then FCFileName:=SelFilePath+FCFileName;
                  NormalizePath(FCFileName);
 // Call the appropriate listview handler based on the file source.
                  Case SrcType of
@@ -410,6 +410,7 @@ try
                    'LoadProjFile',MB_ICONERROR+MB_OK)
                  end;
              end;
+          end;
      end;
     finally
       Free;
@@ -459,7 +460,11 @@ if Form1.sgIFL.RowCount>Form1.sgIFL.FixedRows then begin
   // Enable the global selection control once the Listview has files in it.
   Form1.btnSelAllIncFiles.Enabled:=true;
   UpdateProjectUI;
-
+end else begin
+// If no file resources were found in the project file, advise the user.
+  lMsg:='Unable to locate any file based media resources in the Shotcut Project.'+
+    LineEnding+LineEnding+'Project file not opened.';
+  Application.MessageBox(Pchar(lMsg),'Load Project File',MB_ICONEXCLAMATION+MB_OK)
 end;
 end;
 Procedure LoadPackageFile(SrcFQFN:String);
