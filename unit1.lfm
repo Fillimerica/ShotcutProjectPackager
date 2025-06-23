@@ -1356,7 +1356,7 @@ object Form1: TForm1
     Left = 16
     Height = 15
     Top = 7
-    Width = 115
+    Width = 110
     Alignment = taRightJustify
     Caption = 'ShotCut Project File: '
     Font.CharSet = ANSI_CHARSET
@@ -1392,10 +1392,10 @@ object Form1: TForm1
     ParentFont = False
   end
   object lblSCPF4: TLabel
-    Left = 844
+    Left = 850
     Height = 15
     Top = 64
-    Width = 116
+    Width = 110
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Total Files in Project: '
@@ -1409,7 +1409,7 @@ object Form1: TForm1
     Left = 401
     Height = 15
     Top = 89
-    Width = 101
+    Width = 99
     Caption = 'Included Files List'
     Font.CharSet = ANSI_CHARSET
     Font.Height = -12
@@ -1419,10 +1419,10 @@ object Form1: TForm1
     ParentFont = False
   end
   object lblSCPF6: TLabel
-    Left = 831
+    Left = 834
     Height = 15
     Top = 89
-    Width = 129
+    Width = 126
     Alignment = taRightJustify
     Anchors = [akTop, akRight]
     Caption = 'Missing Files in Project: '
@@ -1545,7 +1545,7 @@ object Form1: TForm1
     Left = 57
     Height = 15
     Top = 24
-    Width = 73
+    Width = 71
     Alignment = taRightJustify
     Caption = 'Package File: '
     Font.CharSet = ANSI_CHARSET
@@ -1639,9 +1639,7 @@ object Form1: TForm1
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = '.mlt'
-    FileName = 'S:\Amazon and Youtube\Microwave Interlock'
     Filter = 'Packager Files (*.mlt,*.sczip)|*.mlt;*.sczip|ShotCut Project (*.mlt)|*.mlt|Packaged Project (*.sczip)|*.sczip'
-    InitialDir = 'S:\Amazon and Youtube\'
   end
   object TVIL: TImageList
     Top = 89
